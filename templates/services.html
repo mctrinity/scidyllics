@@ -269,47 +269,57 @@
     </div>
 
     <script>
-        // Get all the modal elements
-        var workModal = document.getElementById("workModal");
-        var projectModal = document.getElementById("projectModal");
-        var skillsModal = document.getElementById("skillsModal");
-        var viewcvModal = document.getElementById("viewcvModal");
-
-        // Get the icons that open the modals
-        var workBtn = document.getElementById("workChevron");
-        var projectBtn = document.getElementById("projectChevron");
-        var skillsBtn = document.getElementById("skillsChevron");
-        var viewcvBtn = document.getElementById("viewcvChevron");
-
-        // Add event listeners to icons
-        workBtn.onclick = function() {
-            workModal.style.display = "block";
-        };
-        projectBtn.onclick = function() {
-            projectModal.style.display = "block";
-        };
-        skillsBtn.onclick = function() {
-            skillsModal.style.display = "block";
-        };
-        viewcvBtn.onclick = function() {
-            viewcvModal.style.display = "block";
-        };
-
-        // Close the modal when clicking on <span> (x)
-        var spans = document.getElementsByClassName("close");
-        for (var i = 0; i < spans.length; i++) {
-            spans[i].onclick = function() {
-                this.parentElement.parentElement.style.display = "none";
-            };
-        }
-
-        // Close the modal if the user clicks anywhere outside of it
-        window.onclick = function(event) {
-            if (event.target.className === "modal") {
-                event.target.style.display = "none";
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all the modal elements
+            var workModal = document.getElementById("workModal");
+            var projectModal = document.getElementById("projectModal");
+            var skillsModal = document.getElementById("skillsModal");
+            var viewcvModal = document.getElementById("viewcvModal");
+    
+            // Get the icons that open the modals
+            var workBtn = document.getElementById("workChevron");
+            var projectBtn = document.getElementById("projectChevron");
+            var skillsBtn = document.getElementById("skillsChevron");
+            var viewcvBtn = document.getElementById("viewcvChevron");
+    
+            // Check if the elements exist before adding event listeners
+            if (workBtn) {
+                workBtn.onclick = function() {
+                    workModal.style.display = "block";
+                };
             }
-        };
-
+            if (projectBtn) {
+                projectBtn.onclick = function() {
+                    projectModal.style.display = "block";
+                };
+            }
+            if (skillsBtn) {
+                skillsBtn.onclick = function() {
+                    skillsModal.style.display = "block";
+                };
+            }
+            if (viewcvBtn) {
+                viewcvBtn.onclick = function() {
+                    viewcvModal.style.display = "block";
+                };
+            }
+    
+            // Close the modal when clicking on <span> (x)
+            var spans = document.getElementsByClassName("close");
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].onclick = function() {
+                    this.parentElement.parentElement.style.display = "none";
+                };
+            }
+    
+            // Close the modal if the user clicks anywhere outside of it
+            window.onclick = function(event) {
+                if (event.target.className === "modal") {
+                    event.target.style.display = "none";
+                }
+            };
+        });
     </script>
+
 
 {% endblock content %}
