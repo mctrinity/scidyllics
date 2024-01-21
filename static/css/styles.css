@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Merriweather', serif;
+    background-color: #ffffe6;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Base Navbar Styles */
+nav {
+    background-color: #285f61;
+    /* color: white; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    position: relative; /* Add this if not already present */
+    z-index: 2000; 
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+}
+
+.nav-brand a {
+    color: #f1eddc; /* Set the color for both text and image links */
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-brand a:hover {
+    opacity: 0.8; /* Fades the brand on hover */
+    color: #ff8e00; /* Change color on hover */
+}
+
+.nav-brand img {
+    height: 60px;
+    margin: 20px;
+    padding: 5px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-links a {
+    color: #f1eddc;
+    text-decoration: none;
+    margin: 0 15px;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #f1eddc;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 110px;
+        background-color: #285f61;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 10px 0;
+        color: #f1eddc;
+        text-decoration: none;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 400;
+        font-size: 22px;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+        z-index: 1000;
+    }
+}
+
+/* Hero CSS */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: bolder;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+p {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+}
+
+.hero-grid video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Subscriber Video and Form Container */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px; /* Increased space between columns */
+    margin: 40px 200px; /* Vertical spacing and larger horizontal margins */
+    align-items: center; /* Vertically center the content in each cell */
+}
+
+.video-container video {
+    width: 100%; /* Use full width of the grid cell */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-form-wrapper {
+    padding: 30px;
+    background-color: #ffffe6;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* Stack in one column on smaller screens */
+        margin: 40px 20px; /* Adjusted smaller horizontal margins for smaller screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+    }
+
+    .video-container video, .subscribe-form-wrapper {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+/* Additional styles for Subscribe Section */
+.subscribe-section {
+    background-color: #ffffe6;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Styling for form elements */
+.subscribe-input, .subscribe-button {
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.subscribe-button {
+    padding: 10px 15px;
+    background-color: #285f61;
+    color: #f1eddc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.subscribe-button:hover {
+    background-color: #83acae;
+}
+
+
+
+/* Hover effect for text links */
+.footer a:hover, .nav-links a:hover, .nav-brand:hover, .footer-legal-link:hover {
+    color: #ff8e00;
+}
+
+
+/* Hover effect for icons */
+.footer-icons a:hover img {
+    filter: brightness(0.8) saturate(10) hue-rotate(-30deg) invert(85%) sepia(100%) saturate(300%) contrast(1);
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+/* Modal Content Box */
+.modal-content {
+    position: relative; /* Needed for absolute positioning of children */
+    background-color: #ffffe6;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #214346;
+    width: 30%; /* Could be more or less, depending on screen size */
+    border-radius: 5px; /* Optional: for rounded corners */
+    text-align: center;
+}
+
+/* The Close Button */
+.close-button {
+    color: #285f61;
+    position: absolute; /* Absolute positioning */
+    top: 10px; /* 10px from the top of .modal-content */
+    right: 10px; /* 10px from the right of .modal-content */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; /* Cursor change on hover */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #214346;
+    text-decoration: none;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: #285f61;
+    color: #f1eddc;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    position: relative; /* Set to relative to ensure it's not sticky */
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.footer-text, .footer-legal-block {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    font-size: smaller;
+}
+
+.footer-icons {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-icons a {
+    color: #f1eddc;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-icons img {
+    width: 20px;
+    height: 15px;
+    margin: 0 5px;   
+}
+
+.footer-legal-link {
+    color: #f1eddc;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-wrap: wrap;
+    }
+
+    .footer-text, .footer-legal-block, .footer-icons {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
