@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+    <!-- Main Content for the Home Page -->
+
+    <!-- Gallery Heading -->
+    <section class="gallery-heading">
+        <h2>Gallery</h2>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        {% for post in all_posts %}
+        <a href="{{ url_for('view_post', post_id=post.id) }}" class="gallery-item-link">
+            <div class="gallery-item {{ 'hidden' if loop.index > 4 }}">
+                <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+            </div>
+        </a>
+        {% endfor %}
+
+        <!-- Toggle Button (only displayed if more than four posts) -->
+        {% if all_posts|length > 4 %}
+            <button id="toggleButton" class="toggle-button">Show More Posts</button>
+        {% endif %}
+    </section>
+
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="content-grid">
+            <!-- Video Section -->
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="../static/video/newsletter.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="subscribe-form-wrapper">
+                <form id="subscribe-form" class="subscribe-form" method="post">
+                    {{ form.hidden_tag() }} <!-- Include hidden fields for CSRF protection -->
+                    <div class="subscribe-title"><h3>Subscribe to Newsletters</h3></div>
+                    <p>Stay updated with the latest news and exclusive offers.</p>
+                    <br>
+                    <div class="subscribe-inputs">
+                        <input type="email" id="emailInput" class="subscribe-input" placeholder="Enter your email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                        <input type="submit" value="Subscribe Now" class="subscribe-button" onclick="subscribeFunction(event)">
+                    </div>
+                </form>                   
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Custom Alert Modal -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modalMessage">Your message here.</p>
+        </div>
+    </div>
+
+
+    <script>
+        function subscribeFunction(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var email = document.getElementById("emailInput").value; // Get the email input value
+            var csrfToken = document.querySelector('input[name="csrf_token"]').value; // Fetch CSRF token from hidden input
+            var data = { email: email };
+
+            fetch('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("modalMessage").innerText = data.message;
+                document.getElementById("alertModal").style.display = "block";
+            })
+            .catch(error => {
+                document.getElementById("modalMessage").innerText = "An error occurred. Please try again later.";
+                document.getElementById("alertModal").style.display = "block";
+            })
+            .finally(() => {
+                document.getElementById("subscribe-form").reset(); // Reset the form in all cases
+            });
+
+            return false; // Prevent form submission
+        }
+
+      
+        function closeModal() {
+            document.getElementById("alertModal").style.display = "none"; // Function to close the modal
+        }
+      </script>
+
+    <!-- Post Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggleButton = document.getElementById("toggleButton");
+            var hiddenPosts = document.querySelectorAll('.gallery-item.hidden');
+    
+            toggleButton.onclick = function() {
+                hiddenPosts.forEach(function(post) {
+                    post.style.display = post.style.display === "none" || post.style.display === "" ? "grid" : "none";
+                });
+    
+                toggleButton.textContent = toggleButton.textContent === "Show More Posts" ? "Hide Posts" : "Show More Posts";
+            };
+        });
+    </script>
+    
+
+      
+{% endblock content %}

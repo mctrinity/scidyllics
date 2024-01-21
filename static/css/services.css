@@ -1,0 +1,256 @@
+/* Services CSS Stylings */
+
+/* Services CSS Stylings */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffe6;
+}
+
+/* Hero Grid Section Enhancements */
+.hero-grid {
+    background-color: #ffffe6; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-grid div:first-child {
+    padding-right: 20px; /* Adds some space between text and video */
+}
+
+.hero-grid h1 {
+    color: #333; /* Dark color for better readability */
+    margin-bottom: 10px;
+}
+
+.hero-grid p {
+    font-size: 1rem; /* Adjust font size for readability */
+}
+
+/* About Section Styling */
+section > div {
+    background-color: #ffffe6; /* White background for clarity */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 20px; /* Adds space between sections */
+}
+
+section > div h1 {
+    color: #333; /* Blue color for headings */
+    margin-bottom: 15px;
+}
+
+section div p {
+    margin-bottom: 20px; /* Adds 20px space below each paragraph */
+}
+
+p span {
+    font-weight: bold; /* Makes the text bold */
+    color: #333; /* A distinct color for emphasis, adjust as needed */
+}
+
+
+
+/* Service Page Enhancements */
+.service-page {
+    background-color: #ffffe6; /* Light blue background */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.service-item-container h4 {
+    color: #333; /* Dark color for titles */
+}
+
+
+section > div p {
+    color: #666; /* Dark grey for paragraphs */
+    line-height: 1.6;
+}
+
+.icon-link {
+    text-decoration: none; /* Removes the underline */
+    color: #666;
+}
+
+/* Optional: Add hover effect to indicate it's a clickable link */
+.icon-link:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+
+/* Service Section */
+.service-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Service Items */
+.service-section .container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 10px; */
+    gap: 20px;
+}
+
+.service-section .container .service-item {
+    width: calc(25% - 20px); /* Adjust for margins */
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.service-item-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 10px;
+}
+
+.service-item img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.service-section .container .service-item img {
+    width: 100%; /* Default width for all screens */
+    height: auto; /* Maintain aspect ratio */
+    padding: 20px; /* Existing padding */
+}
+
+/* Increase image size for desktop mode */
+.service-section .container .service-item img {
+    width: 150%; /* Increase the size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+/* Modals CSS */
+/* General Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Adjust this value to reduce the width */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: left; /* Justify text to the left */
+}
+
+/* Close Button Styling */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Content Styling */
+.modal h4 {
+    font-family: 'Merriweather', serif; /* Sets the font for h4 */
+    margin-bottom: 20px; /* Optional: Adds space below the heading */
+}
+
+.modal p, 
+.modal ul {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Styling list items inside the modal */
+.modal ul li {
+    font-family: 'Noto Sans', sans-serif; /* Sets the font */
+    margin-bottom: 15px; /* Adds more space between items */
+    text-align: left; /* Ensures text is left-aligned */
+}
+
+.modal ul {
+    list-style-type: disc; /* Adds bullets back to the list */
+    padding-left: 20px; /* Adds padding to align the bullets properly */
+}
+
+/* Custom Modal Width Styling */
+#projectModal .modal-content,
+#skillsModal .modal-content,
+#viewcvModal .modal-content {
+    width: 40%; /* Adjust this value as needed */
+}
+
+
+
+/* Responsive Design for Modal */
+@media screen and (max-width: 600px) {
+    .modal-content {
+        width: 90%; /* Increase width on smaller screens if necessary */
+    }
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+    #projectModal .modal-content,
+    #skillsModal .modal-content,
+    #viewcvModal .modal-content {
+        width: 80%; /* Adjust for smaller screens if necessary */
+    }
+}
+
+/* Responsiveness for Service Items */
+/* Tablet screens */
+@media screen and (max-width: 1024px) {
+    .service-section .container .service-item img {
+        width: 100%; /* Reset width for smaller screens */
+    }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 768px) {
+    .service-section .container {
+        display: grid; /* Change to grid layout */
+        grid-template-columns: 1fr; /* Each item takes full row */
+        width: 100%;
+        gap: 20px; /* Maintain gap consistency */
+    }
+
+    .service-section .container .service-item {
+        width: auto; /* Width auto for grid items */
+        margin: 0; /* Adjust margin for grid layout */
+    }
+}

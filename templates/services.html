@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
+    <section>
+        <main>
+            <div class="container">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div>
+                            <h1>Code Conqueror: Master of Python, Web Realms, and AI Mysteries</h1>
+                            <div>
+                                <p>Weaving the Web, Enlivening AI, Mastering Python – Journey Beyond Code
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <video autoplay muted loop>
+                                <source src="../static/video/laptop_animenew.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div> 
+            </div>               
+        </main>        
+    </section>
+</header>
+
+<section>
+    <main>
+        <div class="container">
+            <div class="container">
+                <div>
+                    <h1>About the Digital Virtuoso</h1>
+            
+                    <p>Welcome to the realm of the "Digital Virtuoso," where coding is an art and every project a masterpiece. I am a Python Prodigy & Web Design Wizard, crafting unique digital experiences with a blend of technical expertise and creative flair.</p>
+                    <br>
+                    <h2>Core Skills and Tools:</h2>
+                    <br>
+            
+                    <p><span>Python Mastery:</span> Harnessing the power of Python to solve complex problems and build efficient applications.</p>
+            
+                    <p><span>Web Design with HTML/CSS:</span> Creating visually appealing and user-friendly websites with the foundational web languages.</p>
+            
+                    <p><span>JavaScript Development:</span> Enhancing web functionalities and interactivity with advanced JavaScript techniques.</p>
+            
+                    <p><span>Flask Framework:</span> Building dynamic and scalable web applications using Flask, Python's lightweight and versatile web framework.</p>
+            
+                    <p><span>AI Integration with Midjourney, ChatGPT-Dalle:</span> Implementing cutting-edge AI tools like Midjourney and ChatGPT-Dalle for innovative solutions and engaging experiences.</p>
+                    
+                    <p><span>Visual Design with Canva:</span> Crafting compelling graphics and visual content, leveraging Canva's intuitive design tools.</p>
+            
+                    <p><span>SEO Strategies:</span> Optimizing web presence for maximum visibility and reach in search engine results.</p>
+            
+            
+                    <p><span>Webflow Expertise:</span> Designing and launching responsive, high-performing websites using Webflow's powerful platform.</p>
+            
+                    <p><span>Figma for UI/UX Design:</span> Bringing interfaces to life with Figma, creating intuitive and impactful user experiences.</p>
+            
+                    <p><span>Conversational AI with Dialogflow:</span> Developing engaging and intelligent chatbots and virtual assistants using Dialogflow.</p>
+                    <br>
+                    <p>In my digital odyssey, every line of code tells a story, and every design element serves a purpose. Join me in exploring the endless possibilities of the digital world, where innovation meets imagination.</p>
+                </div>
+            </div> 
+        </div>               
+    </main>        
+</section>
+
+<div class="service-page">
+    <div class="main-content">
+        <section class="service-section">
+            <div class="container">
+
+                <!-- Work Experience Modal -->
+                <div class="service-item">
+                    <div class="service-item-container">
+                        <i class="bi bi-clipboard" style="padding-right: 5px;"></i>
+                        <h4 id="workHeader">Work</h4>
+                        <p>XP
+                            <a href="#" class="icon-link" id="workChevron">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </p>
+                        <img src="../static/images/blogimages/bloglogo-modified.png" alt="work history">        
+                    </div>
+                </div>    
+
+                <!-- Projects Modal -->
+                <div class="service-item">
+                    <div class="service-item-container">
+                        <i class="bi bi-paperclip" style="padding-right: 5px;"></i>
+                        <h4>Projects</h4>
+                        <p>List
+                            <a href="#" class="icon-link" id="projectChevron">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </p>
+                        <img src="../static/images/blogimages/bloglogo-modified.png" alt="work history">
+                    </div>
+                </div> 
+
+                <!-- Skills Modal -->
+                <div class="service-item">
+                    <div class="service-item-container">
+                        <i class="bi bi-briefcase" style="padding-right: 5px;"></i>
+                        <h4>Skills</h4>
+                        <p>List
+                            <a href="#" class="icon-link" id="skillsChevron">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </p> 
+                        <img src="../static/images/blogimages/bloglogo-modified.png" alt="work history">
+                    </div>
+                </div>
+
+                <!-- Online CV Viewing Link (Direct Download) -->
+                <div class="service-item">
+                    <div class="service-item-container">
+                        <i class="bi bi-box-arrow-down" style="padding-right: 5px;"></i>
+                        <h4>Profile</h4>
+                        <p><a href="static/pdf/maryanndizonCV20231130.pdf" class="icon-link" download="MaryAnnDizonCV.pdf">
+                            CV<i class="bi bi-chevron-right"></i>
+                            </a>
+                        </p> 
+                        <img src="../static/images/blogimages/bloglogo-modified.png" alt="work history">
+                    </div> 
+                </div>
+
+
+            </div>   
+        </section>
+    </div>
+</div>
+
+<!-- Modal Contents -->
+    <!-- Work Experience Modal Content -->
+    <div id="workModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Work Experience Details</h4>
+            <ul>
+                <li>
+                    <strong>Surf Life Saving Australia - DevOps Engineer</strong>
+                    December 2022 – May 2023, Legaspi Village, Makati City
+                    <ul>
+                        <li>Created CI/CD pipelines that deploy to both Azure and AWS.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Nowcom Global Services, LLC - Scrum Master/Sr. DevOps Engineer II</strong>
+                    April 2020 – November 2022, Ortigas Center, Pasig City
+                    <ul>
+                        <li>Project management and reports.</li>
+                    </ul>
+                    <!-- Add more details as needed -->
+                </li>
+                <li>
+                    <strong>Nowcom Global Services, LLC - Sr. DevOps Engineer II</strong>
+                    January 2014 – March 2020, Ortigas Center, Pasig City
+                    <ul>
+                        <li>Overseeing end-to-end build processes and deployment.</li>
+                        <li>Maintained change management processes for software documentation.</li>
+                        <li>Collaborated with cross-functional teams to prioritize and schedule builds.</li>
+                        <li>Managed version control systems and validated binaries for various developments.</li>
+                        <li>Assisted in post-implementation reviews and build metrics analysis.</li>
+                        <li>Configured and implemented automated tools for release management.</li>
+                        <li>Supported Quality Assurance and user acceptance testing.</li>
+                        <li>Wrote and maintained procedures for build/release management.</li>
+                    </ul>
+                    <!-- Add more details as needed -->
+                </li>
+                <li>
+                    <strong>Nowcom Global Services, LLC - Software QA Engineer</strong>
+                    July 2013 - December 2013, Ortigas Center, Pasig City
+                    <ul>
+                        <li>Gathered customer requirements and addressed production issues.</li>
+                        <li>Developed and documented test plans and maintained automated test jobs.</li>
+                        <li>Tested, reported, and tracked software issues.</li>
+                        <li>Assisted in reproducing customer complaints and production issues.</li>
+                        <li>Provided instructions for production deployments and troubleshooted issues.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Trend Micro - Cloud Security Engineer</strong>
+                    January 2010 - June 2013, Ortigas Center, Pasig City
+                    <ul>
+                        <li>Provided technical support to customers for Trend Micro products.</li>
+                        <li>Handled customer complaints and escalations.</li>
+                        <li>Upsold Trend Micro Premium Services.</li>
+                        <li>Utilized chat/remote service tools and case logging software.</li>
+                        <li>Conducted shiftlead tasks and beta-testing of new products.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Datahold Phils. Inc. - Data Analyst</strong>
+                    October 2007 - January 2010, Ortigas Center, Pasig City
+                    <ul>
+                        <li>Conducted software research and testing.</li>
+                        <li>Analyzed and maintained databases for UK customers.</li>
+                        <li>Worked with ETL tools, data hygiene, deduplication, and merge/purge software.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Other Roles:</strong>
+                    <ul>
+                        <li>Transcriptionist at TRx Global Outsourcing (February 2006 - June 2008).</li>
+                        <li>Computer Engineer at Northbay Construction Services Corporation (October 1998 - March 2006).</li>
+                        <li>Self-Employed as a Freelance Computer Technician/Programmer/Sales (October 1995 - September 1997).</li>
+                        <li>In-between Artist at Philippine Animation Studio, Inc. (June 1992 - September 1995).</li>
+                        <li>Data Encoder/Filing Clerk at Trans-Asia (Phils.), Inc. (June 1991 - August 1991).</li>
+                        <li>Service Crew/Stock Clerk at WenPhil Corporation (Wendy’s Hamburgers Fast Food Chain) (February 1989 - April 1991).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Project Modal Content -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Project Details</h4>
+            <ul>
+                <li>Data Visualization</li>
+                <li>Web Development</li>
+                <li>Probability and Statistics</li>
+                <li>Blog Content Writing</li>
+                <li>Website Documentation</li>
+                <!-- Add more projects as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Skills Modal Content -->
+    <div id="skillsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Skill Details</h4>
+            <ul>
+                <li>CI/CD</li>
+                <li>Python Programming</li>
+                <li>Web Design/Prototyping</li>
+                <li>Web Development</li>
+                <li>Data Analysis / Science</li>
+                <li>Selenium Testing</li>
+                <li>Webscraping</li>
+                <li>API</li>
+                <li>Octopus Deploy</li>
+                <li>Azure Cloud</li>
+                <li>Vagrant</li>
+                <li>Terraform</li>
+                <li>Docker/Kubernetes</li>
+                <li>Windows and Linux Servers</li>
+                <li>ELK</li>
+                <!-- Add more list items as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Online CV Viewing Modal Content -->
+    <div id="viewcvModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Download CV</h4>
+            <button type="button"></button>
+        </div>
+    </div>
+
+    <script>
+        // Get all the modal elements
+        var workModal = document.getElementById("workModal");
+        var projectModal = document.getElementById("projectModal");
+        var skillsModal = document.getElementById("skillsModal");
+        var viewcvModal = document.getElementById("viewcvModal");
+
+        // Get the icons that open the modals
+        var workBtn = document.getElementById("workChevron");
+        var projectBtn = document.getElementById("projectChevron");
+        var skillsBtn = document.getElementById("skillsChevron");
+        var viewcvBtn = document.getElementById("viewcvChevron");
+
+        // Add event listeners to icons
+        workBtn.onclick = function() {
+            workModal.style.display = "block";
+        };
+        projectBtn.onclick = function() {
+            projectModal.style.display = "block";
+        };
+        skillsBtn.onclick = function() {
+            skillsModal.style.display = "block";
+        };
+        viewcvBtn.onclick = function() {
+            viewcvModal.style.display = "block";
+        };
+
+        // Close the modal when clicking on <span> (x)
+        var spans = document.getElementsByClassName("close");
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].onclick = function() {
+                this.parentElement.parentElement.style.display = "none";
+            };
+        }
+
+        // Close the modal if the user clicks anywhere outside of it
+        window.onclick = function(event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+
+    </script>
+
+{% endblock content %}

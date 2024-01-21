@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <section class="edit-post-section">
+        <div class="container">
+            <h1>Edit Post</h1>
+
+            <!-- Blog Post Edit Form -->
+            <form method="POST" action="{{ url_for('edit_post', post_id=post_id) }}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}  <!-- CSRF token -->
+
+                <!-- Title Input -->
+                <div class="form-group">
+                    {{ form.title.label(for="postTitle") }}
+                    {{ form.title(id="postTitle", required=True, value=post.title) }}
+                </div>
+
+                <!-- Existing Image Preview -->
+                {% if post.post_image %}
+                    <div class="form-group">
+                        <label>Current Image</label>
+                        <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}" style="max-width: 100%; height: auto;">
+                    </div>
+                {% endif %}
+
+                <!-- Image Upload Field -->
+                <div class="form-group">
+                    {{ form.post_image.label(for="postImage") }}
+                    {{ form.post_image(id="postImage", accept="image/*") }}
+                </div>
+
+                <!-- CKEditor Textarea for Content -->
+                <div class="form-group">
+                    {{ form.content.label(for="postContent") }}
+                    {{ form.content(id="postContent", value=post.content) }}
+                </div>
+
+                <!-- Update Button -->
+                <button type="submit" class="btn">Update Post</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- CKEditor CDN and Initialization -->
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('postContent');
+</script>
+
+{% endblock %}

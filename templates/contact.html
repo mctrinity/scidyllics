@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="contact-page">
+    <div class="main-content">
+        <section class="contact-section">
+            <div class="container">
+                <div class="content-flex-container"> <!-- Flex container -->
+                    <br>
+                    <br>
+                    <!-- Form and Heading -->
+                    <div class="form-container">
+                        <h1>Drop Me A Line!</h1>
+                        <!-- Contact form -->
+                        <!-- ... form content ... -->
+                    </div>
+                
+                    <!-- Video Embed -->
+                    <video width="320" height="240" autoplay loop muted>
+                        <source src="../static/video/newcard.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>       
+                </div>
+                
+                <!-- Contact form -->
+                <div>
+                    <form method="POST" onsubmit="submitForm(event)">
+                        {{ form.hidden_tag() }}                    
+    
+                        <!-- Name form -->
+                        <div class="form-group">
+                            {{ form.name.label }}
+                            {{ form.name(style="padding-left: 10px;", placeholder="Enter your name") }}
+                        </div>
+        
+                        <!-- Email form -->
+                        <div class="form-group">
+                            {{ form.email.label }}
+                            {{ form.email(style="padding-left: 10px;", placeholder="Enter your email address") }}
+                        </div>
+        
+                        <div class="form-group">
+                            {{ form.message.label }}
+                            {{ form.message(class="form-control", placeholder="Enter your message here") }}
+                        </div>
+                        {{ form.submit(class="btn btn-primary") }}
+                    </form>     
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Custom Alert Modal -->
+<div id="alertModal" class="modal">
+    <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <p>Your message has been sent. Thank you for contacting us!</p>
+    </div>
+</div>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(document.querySelector('form'));
+
+        fetch('/contact', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("alertModal").style.display = "block";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function clearForm() {
+        document.querySelector('form').reset(); // This will reset the form fields
+    }
+
+    // Close button functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        var closeButton = document.getElementsByClassName("close-button")[0];
+        closeButton.onclick = function() {
+            var modal = document.getElementById("alertModal");
+            modal.style.display = "none";
+            clearForm();
+        };
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        var modal = document.getElementById("alertModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+            clearForm();
+        }
+    }
+</script>
+
+{% endblock content %}

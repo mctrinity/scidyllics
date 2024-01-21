@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <section class="create-post-section">
+        <div class="container">
+            <h1>New Post</h1>
+            <p>This is where we create new post...</p>
+
+            <!-- Blog Post Creation Form -->
+            <form method="POST" action="{{ url_for('create_post') }}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}  <!-- CSRF token -->
+
+                <!-- Title Input -->
+                <div class="form-group">
+                    {{ form.title.label(for="postTitle") }}
+                    {{ form.title(id="postTitle", required=True) }}
+                </div>
+
+                <!-- Image Upload Field -->
+                <div class="form-group">
+                    {{ form.post_image.label(for="postImage") }}
+                    {{ form.post_image(id="postImage", accept="image/*") }}
+                </div>
+
+                <!-- CKEditor Textarea -->
+                <div class="form-group">
+                    {{ form.content.label(for="postContent") }}
+                    {{ form.content(id="postContent") }}
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Create Post</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- CKEditor CDN -->
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('postContent');
+</script>
+
+{% endblock content %}

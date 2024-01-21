@@ -1,0 +1,63 @@
+/* About Page Styling */
+.about-page {
+    /* background-image: url('../images/computer2.png'); */
+    /* Other flex styles */
+    /* background-image: url('path-to-your-image.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+/* About Section Styling */
+.about-section {
+    text-align: center;
+    padding: 20px;
+    flex-grow: 1; /* Allow the section to grow and push the footer down */
+}
+
+.about-section .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffe6;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 5px rgba(193, 164, 164, 0.2); */
+}
+
+.about-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.about-section video {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.about-section p {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        background-size: contain; /* Ensures the full image is visible */
+        background-attachment: fixed; /* Makes the background scroll with the content */
+    }
+}
+
+/* Optional: Adjustments for very small screens */
+@media (max-width: 480px) {
+    body {
+        background-position: top center; /* Adjust the position for better focus on small screens */
+    }
+}

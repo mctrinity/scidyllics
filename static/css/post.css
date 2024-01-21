@@ -1,0 +1,32 @@
+/* Styles for view_post.html */
+.post {
+    margin: 20px;
+    padding: 20px;
+}
+
+.post h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post img {
+    max-width: 100%;  /* Maximum width of the image, scales down on smaller screens */
+    max-height: 300px; /* Maximum height of the image */
+    width: auto;       /* Adjust width automatically to maintain aspect ratio */
+    height: auto;      /* Adjust height automatically to maintain aspect ratio */
+    display: block;    /* Allows margin: auto to work for centering */
+    margin: 20px auto; /* Centers the image and adds some space around it */
+    object-fit: contain; /* Ensures the image is scaled correctly within the set dimensions */
+}
+
+
+.post .content {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 1em; /* Adds space below each paragraph */
+}
+
+
+/* Additional styling as needed */

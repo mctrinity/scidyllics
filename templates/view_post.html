@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <article class="post">
+        <h1>{{ post.title }}</h1>
+        {% if post.post_image %}
+            <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
+        {% endif %}
+        <div class="content">
+            {{ post.content|safe }}
+        </div>
+        <br>
+        <p><i>Posted by {{ post.author }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</i></p>
+    </article>
+</div>
+{% endblock %}

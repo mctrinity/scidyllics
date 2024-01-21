@@ -1,0 +1,116 @@
+/* Gallery Section */
+.gallery-heading {
+    text-align: center;  /* Center the heading */
+    margin: 40px 0;      /* Add top and bottom margin */
+    padding: 10px;       /* Add some padding */
+    background-color: #ffffe6; /* Light background color for the heading */
+    max-width: 80%;      /* Limit the width */
+    margin-left: auto;   /* Center the heading container horizontally */
+    margin-right: auto;
+}
+
+.gallery-heading h2 {
+    font-size: 2em;      /* Larger font size */
+    color: #333;         /* Darker color for the text */
+    margin: 0;           /* Remove default margin */
+    padding: 0;          /* Remove default padding */
+    font-weight: bold;   /* Bold font weight */
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
+    gap: 40px; /* Increased gap between grid items */
+    margin: 30px auto; /* Increased top & bottom margin, auto left & right margin for centering */
+    max-width: 1200px; /* Maximum width of the grid */
+    padding: 0 15px; /* Additional padding for finer control */
+}
+
+.gallery-item {
+    background-color: #ffffe6; /* Light background for each item */
+    border: 0px; /* No-Border for each item */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures the content fits within the borders */
+}
+
+/* Specific styles for the first four posts */
+.gallery-item:nth-child(-n+4) img {
+    display: block; /* Makes sure the image is a block element */
+    max-width: 70%; /* Reduce the width to 70% of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area nicely */
+    margin: auto; /* Center the image within the container */
+}
+
+
+/* Rest of the .gallery-item img styles */
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.05s ease; /* Smooth transition for the transform */
+    padding: 20px;
+}
+
+/* Image Hover Effect */
+.gallery-item:hover img {
+    transform: scale(1.1); /* Slightly scale up the image on hover */
+}
+
+/* Post Title Hover Effect */
+.gallery-item h3:hover {
+    color: #e84d2a; /* Change color on hover */
+}
+
+.gallery-item h3 {
+    margin: 10px; /* Space around the title */
+    font-size: 1.2em; /* Slightly larger font for the title */
+    transition: color 0.05s ease; /* Smooth transition for color change */
+}
+
+.gallery-item p {
+    margin: 0 10px 10px; /* Space around the paragraph */
+    color: #555; /* Slightly darker text for readability */
+}
+
+.gallery-item-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Keeps the text color consistent with the rest of the content */
+}
+
+/* Toggle Button Style */
+.toggle-button {
+    background-color: #ffffe6;
+    color: #214346;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    grid-column: 1 / -1;
+    transition: color 0.3s;
+}
+
+.toggle-button:hover {
+    color: #e84d2a;
+}
+
+/* Hidden Class for Toggle Functionality */
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr; /* Single column layout for medium and small screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-item img {
+        max-height: 140px; /* Optionally adjust the image height for smaller screens */
+    }
+    
+    /* Additional responsive styles for smaller screen elements can be added here */
+}
