@@ -15,7 +15,8 @@
     <!-- Gallery Section -->
     <section class="gallery">
         {% for post in all_posts %}
-        <a href="{{ url_for('view_post', post_id=post.id) }}" class="gallery-item-link">
+        <!-- Update the link to use post.slug instead of post.id -->
+        <a href="{{ url_for('view_post', slug=post.slug) }}" class="gallery-item-link">
             <div class="gallery-item {{ 'hidden' if loop.index > 4 }}">
                 <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
                 <h3>{{ post.title }}</h3>
@@ -29,7 +30,6 @@
             <button id="toggleButton" class="toggle-button">Show More Posts</button>
         {% endif %}
     </section>
-
 
     <!-- Subscribe Section -->
     <section class="subscribe-section">
@@ -51,12 +51,10 @@
                         <input type="email" id="emailInput" class="subscribe-input" placeholder="Enter your email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
                         <input type="submit" value="Subscribe Now" class="subscribe-button" onclick="subscribeFunction(event)">
                     </div>
-                </form>                   
+                </form>
             </div>
         </div>
     </section>
-
-    
 
     <!-- Custom Alert Modal -->
     <div id="alertModal" class="modal">
@@ -65,7 +63,6 @@
             <p id="modalMessage">Your message here.</p>
         </div>
     </div>
-
 
     <script>
         function subscribeFunction(event) {
@@ -99,28 +96,25 @@
             return false; // Prevent form submission
         }
 
-      
         function closeModal() {
             document.getElementById("alertModal").style.display = "none"; // Function to close the modal
         }
-      </script>
+    </script>
 
     <!-- Post Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var toggleButton = document.getElementById("toggleButton");
             var hiddenPosts = document.querySelectorAll('.gallery-item.hidden');
-    
+
             toggleButton.onclick = function() {
                 hiddenPosts.forEach(function(post) {
                     post.style.display = post.style.display === "none" || post.style.display === "" ? "grid" : "none";
                 });
-    
+
                 toggleButton.textContent = toggleButton.textContent === "Show More Posts" ? "Hide Posts" : "Show More Posts";
             };
         });
     </script>
-    
 
-      
 {% endblock content %}
