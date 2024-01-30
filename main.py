@@ -7,7 +7,6 @@ from forms import PostForm, SubscribeForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask import session
-# from flask import jsonify
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.exceptions import BadRequest
 import re
@@ -67,6 +66,7 @@ class Subscriber(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     date_subscribed = db.Column(db.DateTime, default=datetime.utcnow)
 
+
 # Custom slugify function based on the re module
 def slugify(text):
     # Remove special characters and spaces, and convert to lowercase
@@ -112,7 +112,6 @@ def index():
     return render_template('index.html', form=form, latest_posts=latest_posts, all_posts=all_posts)
 
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -154,7 +153,6 @@ def contact():
     
     return render_template('contact.html', form=form)
 
-# Create Post Route
 # Create Post Route
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
@@ -220,8 +218,6 @@ def edit_post(post_id):
 
     return render_template('edit_post.html', form=form, post_id=post_id, post=post)
 
-
-
 # View Post Route
 @app.route('/post/<string:slug>')
 def view_post(slug):
@@ -231,10 +227,7 @@ def view_post(slug):
         post.post_image = post.post_image.replace('\\', '/')
     return render_template('view_post.html', post=post)
 
-
-
 # Subscribe Route
-
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     data = request.json
@@ -275,9 +268,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
 # Crop Hero Video
-
 def main():
     # Open the video
     video_path = '../static/video/laptop_animenew.mp4'
@@ -299,7 +290,7 @@ def main():
 
     # Process video frames here in the next step
 
-    # Release everything when job is finished
+    # Release everything when the job is finished
     cap.release()
     out.release()
     cv2.destroyAllWindows()
@@ -313,10 +304,9 @@ if __name__ == "__main__":
         # Optionally, you can set a default path or exit the script
         # video_path = 'default/path/to/video.mp4'
         # main(video_path)
-
+    
     update_existing_post_slugs()
     print("Updated slugs for existing posts.")
-
 
 # Run the Flask application
 if __name__ == '__main__':
