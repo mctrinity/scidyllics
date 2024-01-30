@@ -52,6 +52,7 @@ class BlogPost(db.Model):
     content = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(50))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    slug = db.Column(db.String(255), unique=True, nullable=False)
     comments = db.relationship('Comment', backref='blog_post', lazy=True)
 
 class Comment(db.Model):
@@ -66,6 +67,29 @@ class Subscriber(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     date_subscribed = db.Column(db.DateTime, default=datetime.utcnow)
 
+# Custom slugify function based on the re module
+def slugify(text):
+    # Remove special characters and spaces, and convert to lowercase
+    text = re.sub(r'[^a-zA-Z0-9]', ' ', text).strip().lower()
+    # Replace spaces with hyphens
+    text = re.sub(r'\s+', '-', text)
+    return text
+
+# Function to update slugs for existing posts
+def update_existing_post_slugs():
+    with app.app_context():
+        # Fetch all existing blog posts
+        existing_posts = BlogPost.query.all()
+
+        for post in existing_posts:
+            # Generate a new slug using the custom slugify function
+            new_slug = slugify(post.title)
+            
+            # Update the post's slug
+            post.slug = new_slug
+
+        # Commit the changes to the database
+        db.session.commit()
 
 # Routes
 @app.route('/')
@@ -131,6 +155,7 @@ def contact():
     return render_template('contact.html', form=form)
 
 # Create Post Route
+# Create Post Route
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
     form = PostForm()
@@ -144,6 +169,9 @@ def create_post():
             post_content = form.content.data
             post_author = 'Maki'  # Placeholder author
 
+            # Generate the slug from the post title
+            slug = slugify(post_title)  # Replace with your custom slugify function
+
             # Handle Image Upload
             file = form.post_image.data
             post_image_path = None
@@ -153,7 +181,7 @@ def create_post():
                 file.save(file_path)
                 post_image_path = os.path.join('images/blogimages', filename)
 
-            new_post = BlogPost(title=post_title, content=post_content, post_image=post_image_path, author=post_author)
+            new_post = BlogPost(title=post_title, content=post_content, slug=slug, author=post_author)
             db.session.add(new_post)
             db.session.commit()
             print("New post added:", new_post)  # Debugging
@@ -176,6 +204,9 @@ def edit_post(post_id):
         post.title = form.title.data
         post.content = form.content.data
 
+        # Generate the slug from the post title
+        post.slug = slugify(post.title)  # Replace with your custom slugify function
+
         # Handle Image Upload
         if 'post_image' in request.files:
             file = request.files['post_image']
@@ -185,24 +216,20 @@ def edit_post(post_id):
                 post.post_image = os.path.join('images/blogimages', filename)
 
         db.session.commit()
-        return redirect(url_for('view_post', post_id=post.id))
+        return redirect(url_for('view_post', slug=post.slug))
 
     return render_template('edit_post.html', form=form, post_id=post_id, post=post)
 
 
 
 # View Post Route
-@app.route('/post/<int:post_id>')
-def view_post(post_id):
-    post = BlogPost.query.get_or_404(post_id)
-
+@app.route('/post/<string:slug>')
+def view_post(slug):
+    post = BlogPost.query.filter_by(slug=slug).first_or_404()
     # Replace backslashes with forward slashes in the image path
     if post.post_image:
         post.post_image = post.post_image.replace('\\', '/')
-
-    print("Adjusted image path:", post.post_image)  # Debugging
     return render_template('view_post.html', post=post)
-
 
 
 
@@ -286,6 +313,9 @@ if __name__ == "__main__":
         # Optionally, you can set a default path or exit the script
         # video_path = 'default/path/to/video.mp4'
         # main(video_path)
+
+    update_existing_post_slugs()
+    print("Updated slugs for existing posts.")
 
 
 # Run the Flask application
