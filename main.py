@@ -63,6 +63,11 @@ class Subscriber(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     date_subscribed = db.Column(db.DateTime, default=datetime.utcnow)
 
+# Helper function to check allowed file types
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Custom slugify function based on the re module
 def slugify(text):
@@ -259,11 +264,6 @@ def subscribe():
 def inject_csrf_token():
     return dict(csrf_token=lambda: csrf.generate_csrf())
 
-# Helper function to check allowed file types
-def allowed_file(filename):
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == "__main__":
     update_existing_post_slugs()
