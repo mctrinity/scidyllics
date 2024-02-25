@@ -1,0 +1,61 @@
+ /* Custom CSS styles for the "What's Up?" page */
+
+    /* Container for weather section */
+    .weather-container {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Weather form styling */
+    .weather-container form {
+        margin-top: 10px;
+    }
+
+    .weather-container input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .weather-container button {
+        margin-top: 10px;
+    }
+
+    /* Customize the dropdown */
+    .weather-container .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #fff; /* Set background color */
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 4px;
+        list-style-type: none; /* Remove bullet points */
+        padding: 5px;
+    }
+
+    /* Style individual dropdown items */
+    .weather-container .ui-autocomplete li {
+        padding: 5px;
+    }
+
+    /* Billboard section styling */
+    #billboard {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+    }
+
+    /* Stock news section styling */
+    #stock-news {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+    }
+
+    

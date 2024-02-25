@@ -69,7 +69,7 @@
 }
 
 .gallery-item p {
-    margin: 0 10px 10px; /* Space around the paragraph */
+    margin: 0 20px 20px; /* Space around the paragraph */
     color: #555; /* Slightly darker text for readability */
 }
 
@@ -77,6 +77,31 @@
     text-decoration: none; /* Removes underline from links */
     color: inherit; /* Keeps the text color consistent with the rest of the content */
 }
+
+.gallery-item-footer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+}
+
+.delete-post-form {
+    margin: 0;
+}
+
+.delete-post-btn {
+    background-color: #ffffe6;
+    color: #9b9898;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    /* padding: 10px 10px; */
+}
+
+.delete-post-btn:hover {
+    background-color: #ffffe6;
+}
+
 
 /* Toggle Button Style */
 .toggle-button {

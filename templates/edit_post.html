@@ -33,7 +33,7 @@
                 <!-- CKEditor Textarea for Content -->
                 <div class="form-group">
                     {{ form.content.label(for="postContent") }}
-                    {{ form.content(id="postContent", value=post.content) }}
+                    <textarea name="content" id="postContent" required>{{ post.content }}</textarea>
                 </div>
 
                 <!-- Update Button -->

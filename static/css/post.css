@@ -28,5 +28,15 @@
     margin-bottom: 1em; /* Adds space below each paragraph */
 }
 
+.edit-post-btn > a {
+    color: #333;
+    text-decoration: none;
+}
+
+.edit-post-btn > a:hover {
+    color: #ff8e00;
+}
+
+
 
 /* Additional styling as needed */

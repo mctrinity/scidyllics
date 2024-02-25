@@ -8,7 +8,21 @@
         <div class="nav-menu">
             <button class="nav-toggle" id="navToggle">☰</button>
             <div class="nav-links" id="navLinks">
+                {% if current_user.is_authenticated %}
+                    {% if current_user.id == 1 %}
+                        <!-- Link visible only to the admin user -->
+                        <a href="/create_post">Create Post</a>
+                    {% endif %}
+                    <!-- Common link for logged-in users -->
+                    <a href="/logout">Logout</a>
+                {% else %}
+                    <!-- Links visible only to guests -->
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                {% endif %}
+                <!-- Links visible to all users -->
                 <a href="/about">About</a>
+                <!-- <a href="/whatsup">What's Up?</a> -->
                 <a href="/services">Services</a>
                 <a href="/contact">Contact</a>
             </div>

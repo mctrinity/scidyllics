@@ -12,10 +12,15 @@
         </div>
         <br>
         <p><i>Posted by {{ post.author }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</i></p>
+
+        <!-- Edit Post Link -->
+        {% if current_user.is_authenticated and (current_user.id == 1 or current_user.username == post.author) %}
+            <p class="edit-post-btn"><a href="{{ url_for('edit_post', post_id=post.id) }}">--Edit Post--</a></p>
+        {% endif %}
     </article>
 </div>
 
-<!-- Style the link with hover effect -->
+<!-- Back to All Posts Link -->
 <div style="text-align: center; padding-bottom: 20px;">
     <p style="text-decoration: none;">
         <a href="{{ url_for('index') }}" style="text-decoration: none; color: #333; transition: color 0.3s;"

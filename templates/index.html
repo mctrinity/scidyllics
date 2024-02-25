@@ -12,17 +12,27 @@
         <h2>Gallery</h2>
     </section>
 
+
     <!-- Gallery Section -->
     <section class="gallery">
         {% for post in all_posts %}
-        <!-- Update the link to use post.slug instead of post.id -->
-        <a href="{{ url_for('view_post', slug=post.slug) }}" class="gallery-item-link">
-            <div class="gallery-item {{ 'hidden' if loop.index > 4 }}">
-                <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
-                <h3>{{ post.title }}</h3>
+        <div class="gallery-item-wrapper {{ 'hidden' if loop.index > 4 }}">
+            <a href="{{ url_for('view_post', slug=post.slug) }}" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
+                    <h3>{{ post.title }}</h3>
+                </div>
+            </a>
+            <div class="gallery-item-footer">
                 <p>{{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                {% if current_user.is_authenticated and current_user.id == 1 %}
+                    <!-- Delete Button for Admin -->
+                    <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post">
+                        <button type="submit" class="delete-post-btn"><strong><em>X</em></strong></button>
+                    </form>
+                {% endif %}
             </div>
-        </a>
+        </div>
         {% endfor %}
 
         <!-- Toggle Button (only displayed if more than four posts) -->
@@ -30,6 +40,7 @@
             <button id="toggleButton" class="toggle-button">Show More Posts</button>
         {% endif %}
     </section>
+
 
     <!-- Subscribe Section -->
     <section class="subscribe-section">
@@ -105,16 +116,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var toggleButton = document.getElementById("toggleButton");
-            var hiddenPosts = document.querySelectorAll('.gallery-item.hidden');
-
+            var hiddenItems = document.querySelectorAll('.gallery-item-wrapper.hidden');
+    
             toggleButton.onclick = function() {
-                hiddenPosts.forEach(function(post) {
-                    post.style.display = post.style.display === "none" || post.style.display === "" ? "grid" : "none";
+                hiddenItems.forEach(function(item) {
+                    item.classList.toggle('hidden');
                 });
-
+    
                 toggleButton.textContent = toggleButton.textContent === "Show More Posts" ? "Hide Posts" : "Show More Posts";
             };
         });
     </script>
+    
 
 {% endblock content %}
