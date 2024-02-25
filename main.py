@@ -79,7 +79,9 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
+    # password_hash = db.Column(db.String(128))
+    # password_hash = db.Column(db.String(256))
+    password_hash = db.Column(db.String(512)) 
 
     def is_admin(self):
         return self.id == 1  # or other logic to determine admin status
@@ -89,8 +91,6 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
-    
     
 
 # Helper function to check allowed file types
