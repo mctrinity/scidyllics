@@ -83,7 +83,7 @@
 
 /* Hover effect for the submit button */
 .contact-section form input[type="submit"]:hover {
-    background-color: #83acae;
+    background-color: #ff8e00;
 }
 
 /* Responsive adjustments for smaller screens */
