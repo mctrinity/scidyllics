@@ -2,19 +2,56 @@
 
 {% block content %}
 <style>
-    .register-section {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    body, html {
+        height: 100%; /* Ensure full height */
+        margin: 0;
     }
 
-    .register-section h2 {
-        text-align: center;
-        margin-bottom: 20px;
+    .content {
+        min-height: calc(100vh - 60px); /* Adjust this value based on your footer's height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
     }
+
+    .register-section {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 100px;
+        margin: 0 auto; /* Centered with margin */
+        padding: 50px;
+        background-color: #ffffe6;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 900px; /* Control the width of the section */
+    }
+
+    .register-section > div {
+        flex: 1;
+    }
+
+    .register-section img {
+        margin-top: 35px;
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        align-self: center;
+    }
+
+    .form-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .form-container > h2 {
+        margin-bottom: 30px;
+    }
+
 
     .form-group {
         margin-bottom: 15px;
@@ -29,16 +66,16 @@
     }
 
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        color: white;
+        background-color: #214346;
+        /* border-color: #214346; */
+        color: #f1eddc;
         padding: 10px 15px;
         border-radius: 4px;
         cursor: pointer;
     }
 
     .btn-primary:hover {
-        background-color: #0069d9;
+        background-color: #ff8e00;
         border-color: #0062cc;
     }
 
@@ -58,53 +95,73 @@
     a:hover {
         color: #0056b3;
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .register-section {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .register-section img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+    }
 </style>
-<div class="main-content">
+
+<div class="content">
     <section class="register-section">
-        <h2>Register</h2>
-        <form method="post">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.username.label }}
-                {{ form.username(size=32, class_='form-control') }}
-                {% if form.username.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.username.errors[0] }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.email.label }}
-                {{ form.email(size=32, class_='form-control') }}
-                {% if form.email.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.email.errors[0] }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password.label }}
-                {{ form.password(size=32, class_='form-control') }}
-                {% if form.password.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.password.errors[0] }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password2.label }}
-                {{ form.password2(size=32, class_='form-control') }}
-                {% if form.password2.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.password2.errors[0] }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Register</button>
-            </div>
-        </form>
-        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        <div>
+            <img src="../static/images/register-hero-25.png" alt="landscape">
+        </div>
+        <div class="form-container">
+            <h2>Register</h2>
+            <br>
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.username(placeholder="Username", size=32, class_='form-control') }}
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.username.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email(placeholder="Email", size=32, class_='form-control') }}
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.email.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password(placeholder="Password", size=32, class_='form-control') }}
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.password.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password2(placeholder="Confirm Password", size=32, class_='form-control') }}
+                    {% if form.password2.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.password2.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <br>
+                    <br>
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+                </div>
+            </form>
+        </div>
     </section>
 </div>
+
 {% endblock content %}
