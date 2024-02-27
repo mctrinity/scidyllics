@@ -313,7 +313,8 @@ def delete_post(post_id):
     db.session.commit()
     
     flash('Post has been deleted successfully.', 'success')
-    return redirect(url_for('gallery'))
+    # return redirect(url_for('gallery'))
+    return redirect(url_for('index')) 
 
 
 # Subscribe Route

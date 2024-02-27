@@ -1,27 +1,107 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .post-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px; /* Increase gap between image and title */
+        margin: 50px 100px; /* Increase margin at the bottom of the header */
+        padding: 30px;
+    }
+
+    .post-image {
+        flex: 0 0 25%; /* Maintain the initial width */
+        max-width: 25%; /* Maximum width */
+        margin-right: 30px;
+    }
+
+    .post-image img {
+        width: 70%;
+        height: auto;
+        display: block; /* To ensure it's centered */
+        margin: auto; /* Center the image */
+    }
+
+    .post-title {
+        flex: 1;
+        text-align: center; /* Center the title */
+    }
+
+    .post-content {
+        padding: 30px; /* Increase padding */
+        margin:  30px 100px; /* Add margin around the content */
+    }
+
+    .post-title h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 2em; /* Default font size */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) { /* For tablets */
+        .post-title h1 {
+            font-size: 1.8em;
+        }
+    }
+
+    @media (max-width: 768px) { /* For iPads */
+        .post-title h1 {
+            font-size: 1.6em;
+        }
+
+        /* Adjusting the post-header for smaller devices */
+        .post-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .post-image {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 480px) { /* For phones */
+        .post-title h1 {
+            font-size: 1.4em;
+        }
+
+        .post-content {
+            padding: 10px;
+            margin: 10px;
+        }
+    }
+</style>
+
 <div class="main-content">
-    <article class="post">
-        <h1>{{ post.title }}</h1>
+    <div class="post-header">
         {% if post.post_image %}
-            <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
+            <div class="post-image">
+                <img src="{{ url_for('static', filename=post.post_image) }}" alt="{{ post.title }}">
+            </div>
         {% endif %}
-        <div class="content">
-            {{ post.content|safe }}
+
+        <div class="post-title">
+            <h1>{{ post.title }}</h1>
         </div>
+    </div>
+
+    <div class="post-content">
+        {{ post.content|safe }}
         <br>
         <p><i>Posted by {{ post.author }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</i></p>
-
         <!-- Edit Post Link -->
         {% if current_user.is_authenticated and (current_user.id == 1 or current_user.username == post.author) %}
             <p class="edit-post-btn"><a href="{{ url_for('edit_post', post_id=post.id) }}">--Edit Post--</a></p>
         {% endif %}
-    </article>
+    </div>
 </div>
 
 <!-- Back to All Posts Link -->
-<div style="text-align: center; padding-bottom: 20px;">
+<div style="text-align: center; padding-bottom: 30px;"> <!-- Increased padding-bottom -->
     <p style="text-decoration: none;">
         <a href="{{ url_for('index') }}" style="text-decoration: none; color: #333; transition: color 0.3s;"
            onmouseover="this.style.color='#FF5733';" onmouseout="this.style.color='#333';">
